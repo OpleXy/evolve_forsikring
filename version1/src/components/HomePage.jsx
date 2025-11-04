@@ -38,6 +38,12 @@ function HomePage({ onNavigateToMyPage }) {
       title: 'Dyreforsikring',
       description: 'Forsikring for hund, katt og andre kjæledyr',
       icon: '🐕'
+    },
+    {
+      id: 'liv',
+      title: 'Livsforsikring',
+      description: 'Sikre familiens økonomi ved dødsfall',
+      icon: '❤️'
     }
   ];
 
@@ -69,32 +75,6 @@ function HomePage({ onNavigateToMyPage }) {
               </button>
             </div>
           ))}
-        </div>
-      </section>
-
-      <section className="features-section">
-        <h2>Hvorfor velge Evolve Forsikring?</h2>
-        <div className="features-grid">
-          <div className="feature">
-            <div className="feature-icon">💰</div>
-            <h3>Spar penger</h3>
-            <p>Sammenlign priser fra flere selskaper og finn beste tilbud</p>
-          </div>
-          <div className="feature">
-            <div className="feature-icon">⚡</div>
-            <h3>Raskt og enkelt</h3>
-            <p>Få oversikt over alle alternativer på minutter</p>
-          </div>
-          <div className="feature">
-            <div className="feature-icon">🔒</div>
-            <h3>Trygt og sikkert</h3>
-            <p>Dine data behandles konfidensielt og sikkert</p>
-          </div>
-          <div className="feature">
-            <div className="feature-icon">📊</div>
-            <h3>Full oversikt</h3>
-            <p>Administrer alle dine forsikringer på ett sted</p>
-          </div>
         </div>
       </section>
 

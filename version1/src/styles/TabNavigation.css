@@ -1,7 +1,7 @@
 .tab-navigation {
   display: flex;
-  border-bottom: 2px solid #e5e7eb;
-  background: #f9fafb;
+  border-bottom: 2px solid #334155;
+  background: #252b3b;
 }
 
 .tab-button {
@@ -11,20 +11,20 @@
   border: none;
   font-size: 1rem;
   font-weight: 600;
-  color: #6b7280;
+  color: #94a3b8;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
 }
 
 .tab-button:hover {
-  color: #2d3748;
-  background: #f3f4f6;
+  color: #e2e8f0;
+  background: #1e293b;
 }
 
 .tab-button.active {
-  color: #2d3748;
-  background: white;
+  color: #e2e8f0;
+  background: #1a1f2e;
 }
 
 .tab-button.active::after {
@@ -34,5 +34,5 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: #4a5568;
+  background: #4f46e5;
 }
