@@ -1,0 +1,51 @@
+.mypage-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.mypage-header {
+  margin-bottom: 2rem;
+}
+
+.back-btn {
+  background: transparent;
+  border: none;
+  color: #667eea;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  margin-bottom: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.back-btn:hover {
+  color: #5568d3;
+}
+
+.header-content {
+  text-align: center;
+  color: #2d3748;
+}
+
+.header-content h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.header-content p {
+  font-size: 1.1rem;
+  color: #4a5568;
+}
+
+.content-wrapper {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
