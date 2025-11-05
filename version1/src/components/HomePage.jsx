@@ -48,12 +48,19 @@ function HomePage({ onNavigateToMyPage, onNavigateToComparison }) {
     }
   ];
 
-  // Hent prisinfo for hver forsikringstype
+  // Hent prisinfo og selskaper for hver forsikringstype
   const priceRanges = useMemo(() => {
     const ranges = {};
     insuranceTypes.forEach(type => {
       const stats = insuranceService.getProductStats(type.id);
-      ranges[type.id] = stats;
+      const companies = insuranceService.getCompaniesForType(type.id);
+      // Sorter etter pris (lavest først)
+      const products = insuranceService.compareProducts(type.id, { sorterPa: 'pris-lav' });
+      ranges[type.id] = {
+        ...stats,
+        companies: companies,
+        sortedProducts: products
+      };
     });
     return ranges;
   }, []);
@@ -87,9 +94,6 @@ function HomePage({ onNavigateToMyPage, onNavigateToComparison }) {
             const priceInfo = priceRanges[type.id];
             return (
               <div key={type.id} className="insurance-card">
-                <div className="insurance-icon">{type.icon}</div>
-                <h3>{type.title}</h3>
-                <p>{type.description}</p>
                 {priceInfo && priceInfo.antallProdukter > 0 ? (
                   <div className="price-range">
                     Fra: {formatPrice(priceInfo.laveste)} kr - {formatPrice(priceInfo.hoyeste)} kr/mnd
@@ -99,6 +103,11 @@ function HomePage({ onNavigateToMyPage, onNavigateToComparison }) {
                     Kommer snart
                   </div>
                 )}
+
+                <div className="insurance-icon">{type.icon}</div>
+                <h3>{type.title}</h3>
+                <p>{type.description}</p>
+
                 <button
                   className="compare-btn"
                   onClick={() => onNavigateToComparison(type.id)}

@@ -5,6 +5,22 @@ import '../styles/Dashboard.css';
 const Dashboard = () => {
   const { insurances } = useInsurance();
 
+  const getCompanyLogo = (companyName) => {
+    const logoMap = {
+      'DNB': 'dnb.png',
+      'Frende': 'frende.png',
+      'Gjensidige': 'gjensidige.png',
+      'If': 'if.png',
+      'If Forsikring': 'if.png',
+      'KLP': 'klp.png',
+      'SpareBank 1': 'sparebank1.png',
+      'Tryg': 'tryg.png'
+    };
+
+    const logoFile = logoMap[companyName];
+    return logoFile ? `/assets/logos/${logoFile}` : null;
+  };
+
   const handleSeeAlternatives = (insurance) => {
     // TODO: Implementer API-kall til forsikringsselskap for å hente alternativer
     // TODO: Integrer med BankID for autentisering
@@ -43,6 +59,13 @@ const Dashboard = () => {
         {insurances.map((insurance) => (
           <div key={insurance.id} className="insurance-card">
             <div className="insurance-card-header">
+              {getCompanyLogo(insurance.selskap) && (
+                <img
+                  src={getCompanyLogo(insurance.selskap)}
+                  alt={`${insurance.selskap} logo`}
+                  className="company-logo"
+                />
+              )}
               <h3 className="insurance-company">{insurance.selskap}</h3>
             </div>
             <span className="insurance-type">{insurance.dekningstype}</span>

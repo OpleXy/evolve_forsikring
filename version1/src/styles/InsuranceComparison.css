@@ -175,7 +175,6 @@
 }
 
 .product-card:hover {
-  transform: translateY(-5px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   border-color: #4f46e5;
 }
@@ -282,39 +281,160 @@
 .product-description {
   color: #94a3b8;
   font-size: 0.95rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   line-height: 1.5;
 }
 
-/* Coverage Highlights */
-.coverage-highlights {
-  background: #252b3b;
+/* Coverage Categories */
+.coverage-categories {
+  margin-bottom: 1rem;
+}
+
+.category-highlight {
+  background: rgba(16, 185, 129, 0.1);
+  padding: 0.75rem;
+  margin-bottom: 0.75rem;
+  border-radius: 6px;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  position: relative;
+}
+
+.category-highlight h5 {
+  color: #10b981;
+  font-size: 0.95rem;
+  margin: 0 0 0.25rem 0;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.category-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.info-icon-wrapper {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+}
+
+.info-icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.info-icon:hover {
+  opacity: 1;
+}
+
+.info-tooltip {
+  display: none;
+  position: absolute;
+  top: 30px;
+  right: 0;
+  background: #1a1f2e;
+  color: #e2e8f0;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #334155;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  width: 250px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+.info-icon-wrapper:hover .info-tooltip {
+  display: block;
+}
+
+/* Coverage Details Button */
+.coverage-details-btn {
+  width: 100%;
+  padding: 0.75rem;
+  background: #334155;
+  color: #e2e8f0;
+  border: 1px solid #475569;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+.coverage-details-btn:hover {
+  background: #475569;
+  border-color: #64748b;
+}
+
+/* Coverage Table */
+.coverage-table {
+  background: #0f1419;
+  border: 1px solid #334155;
   border-radius: 8px;
   padding: 1rem;
   margin-bottom: 1rem;
 }
 
-.coverage-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 0.5rem 0;
+.coverage-category {
+  margin-bottom: 1.5rem;
+}
+
+.coverage-category:last-child {
+  margin-bottom: 0;
+}
+
+.coverage-category h6 {
+  color: #e2e8f0;
+  font-size: 1rem;
+  margin: 0 0 0.75rem 0;
+  font-weight: 600;
+  padding-bottom: 0.5rem;
   border-bottom: 1px solid #334155;
 }
 
-.coverage-item:last-child {
-  border-bottom: none;
+.coverage-category ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.coverage-item .label {
+.coverage-category li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
   color: #94a3b8;
   font-size: 0.9rem;
 }
 
-.coverage-item .value {
+.coverage-category li.included {
   color: #e2e8f0;
-  font-weight: 600;
-  font-size: 0.95rem;
 }
+
+.coverage-category li.not-included {
+  color: #64748b;
+  opacity: 0.6;
+}
+
+.check-icon {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  object-fit: contain;
+}
+
+.coverage-category li .coverage-label {
+  flex: 1;
+}
+
 
 /* Product Tags */
 .product-tags {
@@ -409,15 +529,60 @@
   cursor: pointer;
 }
 
-/* Disclaimer */
+/* Disclaimer Section */
+.disclaimer-section {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 2px solid #334155;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
 .disclaimer {
   background: #1a1f2e;
-  border-left: 4px solid #f59e0b;
-  padding: 1rem 1.5rem;
+  padding: 1.5rem;
   border-radius: 8px;
   color: #94a3b8;
   font-size: 0.95rem;
   line-height: 1.6;
+  border: 1px solid #334155;
+}
+
+.disclaimer strong {
+  display: block;
+  color: #e2e8f0;
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+}
+
+.disclaimer p {
+  margin: 0;
+}
+
+.report-deviation-btn {
+  background: #334155;
+  color: #e2e8f0;
+  border: 2px solid #475569;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-self: center;
+}
+
+.report-deviation-btn:hover:not(:disabled) {
+  background: #475569;
+  border-color: #64748b;
+  transform: translateY(-2px);
+}
+
+.report-deviation-btn:disabled {
+  background: #10b981;
+  border-color: #059669;
+  cursor: not-allowed;
 }
 
 /* Responsive */

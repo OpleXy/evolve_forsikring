@@ -28,20 +28,28 @@
 .insurance-card:hover {
   background: #2d3548;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
-  transform: translateY(-2px);
 }
 
 .insurance-card-header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.company-logo {
+  height: 40px;
+  width: auto;
+  max-width: 120px;
+  object-fit: contain;
 }
 
 .insurance-company {
   font-size: 1.3rem;
   font-weight: 700;
   color: #e2e8f0;
+  flex: 1;
 }
 
 .insurance-type {

@@ -4,584 +4,513 @@
 export const insuranceProducts = {
   reiseforsikring: [
     {
-      id: 'if-reise-basis-europa',
+      id: 'if-reise-basis',
       selskapId: 'if',
-      produktnavn: 'Reiseforsikring Basis Europa',
-      beskrivelse: 'Grunnleggende dekning for reiser i Europa',
+      produktnavn: 'Helårs reiseforsikring Basis',
+      beskrivelse: 'Grunnleggende beskyttelse for reiser i Norge og utlandet (familiedekning)',
 
       pris: {
-        maned: 89,
-        ar: 990,
+        maned: 164,
+        ar: 1968,
         valuta: 'NOK'
       },
 
       dekninger: {
         medisinsk: {
-          belop: 5000000,
-          beskrivelse: 'Dekning av behandlingskostnader i utlandet'
+          belop: 'Inkludert',
+          beskrivelse: 'Sykdom og ulykke på reise'
         },
-        avbestilling: {
-          belop: 50000,
-          egenandel: 2000,
-          beskrivelse: 'Ved sykdom, dødsfall eller andre uforutsette hendelser'
+        evakuering: {
+          belop: 'Inkludert',
+          beskrivelse: 'Evakuering ved nødssituasjon'
         },
-        forsinkelse: {
-          belop: 10000,
-          vilkar: 'Minimum 4 timer forsinkelse',
-          beskrivelse: 'Dekning av ekstra utgifter ved forsinkelse'
+        digitalLegetime: {
+          belop: 'Inkludert',
+          beskrivelse: 'Digital legetime ved behov'
         },
-        bagasje: {
-          belop: 30000,
-          egenandel: 2000,
-          maksPrGjenstand: 15000,
-          beskrivelse: 'Dekning av tap, skade eller forsinkelse av bagasje'
+        psykologiskForstehjelp: {
+          belop: 'Inkludert',
+          beskrivelse: 'Psykologisk førstehjelp ved alvorlig hendelse'
         },
-        ansvar: {
-          belop: 2000000,
-          beskrivelse: 'Personskade og tingskade du forårsaker'
+        idTyveri: {
+          belop: 'Inkludert',
+          beskrivelse: 'Beskyttelse mot ID-tyveri'
         },
-        hjemtransport: {
-          belop: 'Ubegrenset',
-          beskrivelse: 'Medisinsk nødvendig hjemtransport'
+        rettshjelp: {
+          belop: 'Inkludert',
+          beskrivelse: 'Rettshjelp og ansvar utenfor Norden'
+        },
+        ekstremsport: {
+          belop: 'Inkludert',
+          beskrivelse: 'Dekning ved ekstremsport'
         }
       },
 
       vilkar: {
-        geografiskOmrade: ['Europa', 'Middelhavslandene'],
-        maksAlder: 70,
-        familiedekning: false,
+        geografiskOmrade: ['Norge', 'Europa', 'Verden'],
+        familiedekning: true,
+        familiealternativer: ['Meg selv', 'Meg selv og min familie'],
         maksReisevarighet: 45,
-        kreverHelseerklaering: false,
-        dekkerVinteridretter: false
+        alternativeReisevarigheter: [45, 90, 180],
+        dekkerVinteridretter: false,
+        maksAlder: 100,
+        egenandel: 0
       },
 
-      ekskluderinger: [
-        'Ekstremidrett og farlige aktiviteter',
-        'Krig og terrorisme',
-        'Eksisterende sykdommer (med visse unntak)',
-        'Beruselse og narkotika'
-      ],
-
       metadata: {
-        lenke: 'https://www.if.no/privat/forsikring/reiseforsikring/basis',
-        datakilde: 'manual',
+        lenke: 'https://www.if.no/privat/forsikring/reise/reiseforsikring/kjop',
+        dokument: 'https://if.no/apps/vilkarsbasendokument/IPID?ipid=Hel%C3%A5rs_reiseforsikring',
         sistOppdatert: '2025-11-05',
-        oppdatertAv: 'admin'
+        kilde: 'If Skadeforsikring NUF'
       },
 
       popularitet: 85,
-      anbefalt: true
+      anbefalt: false
     },
-
     {
-      id: 'if-reise-pluss-verden',
+      id: 'if-reise-standard',
       selskapId: 'if',
-      produktnavn: 'Reiseforsikring Pluss Verden',
-      beskrivelse: 'Utvidet dekning for reiser over hele verden',
+      produktnavn: 'Helårs reiseforsikring Standard',
+      beskrivelse: 'Fullverdig dekning for de fleste - inkluderer alt i Basis pluss avbestilling, bagasje og forsinkelse',
 
       pris: {
-        maned: 149,
-        ar: 1650,
+        maned: 200,
+        ar: 2400,
         valuta: 'NOK'
       },
 
       dekninger: {
         medisinsk: {
-          belop: 10000000,
-          beskrivelse: 'Inkluderer tannbehandling inntil 15.000 kr'
+          belop: 'Inkludert',
+          beskrivelse: 'Sykdom og ulykke på reise'
+        },
+        evakuering: {
+          belop: 'Inkludert',
+          beskrivelse: 'Evakuering ved nødssituasjon'
+        },
+        digitalLegetime: {
+          belop: 'Inkludert',
+          beskrivelse: 'Digital legetime ved behov'
+        },
+        psykologiskForstehjelp: {
+          belop: 'Inkludert',
+          beskrivelse: 'Psykologisk førstehjelp ved alvorlig hendelse'
+        },
+        idTyveri: {
+          belop: 'Inkludert',
+          beskrivelse: 'Beskyttelse mot ID-tyveri'
+        },
+        rettshjelp: {
+          belop: 'Inkludert',
+          beskrivelse: 'Rettshjelp og ansvar utenfor Norden'
+        },
+        ekstremsport: {
+          belop: 'Inkludert',
+          beskrivelse: 'Dekning ved ekstremsport'
         },
         avbestilling: {
-          belop: 100000,
-          egenandel: 2000,
-          beskrivelse: 'Utvidet dekning ved avbestilling'
-        },
-        forsinkelse: {
-          belop: 15000,
-          vilkar: 'Minimum 3 timer forsinkelse',
-          beskrivelse: 'Høyere dekning for forsinkelser'
+          belop: 'Inkludert',
+          beskrivelse: 'Avbestilling av reise'
         },
         bagasje: {
-          belop: 50000,
-          egenandel: 2000,
-          maksPrGjenstand: 25000,
-          beskrivelse: 'Utvidet bagasjedekning'
+          belop: 'Inkludert',
+          beskrivelse: 'Tyveri eller skade på eiendeler'
         },
-        ansvar: {
-          belop: 5000000,
-          beskrivelse: 'Høyere ansvarsdekning'
+        forsinketBagasje: {
+          belop: 'Inkludert',
+          beskrivelse: 'Forsinket bagasje'
         },
-        hjemtransport: {
-          belop: 'Ubegrenset',
-          beskrivelse: 'Medisinsk nødvendig hjemtransport'
+        forsinkelse: {
+          belop: 'Inkludert',
+          beskrivelse: 'Kostnader ved forsinkelse (reise, overnatting osv.)'
+        },
+        tapteFeriedager: {
+          belop: 'Inkludert',
+          beskrivelse: 'Kompensasjon for tapte feriedager'
         }
       },
 
       vilkar: {
-        geografiskOmrade: ['Hele verden'],
-        maksAlder: 75,
+        geografiskOmrade: ['Norge', 'Europa', 'Verden'],
         familiedekning: true,
-        maksReisevarighet: 90,
-        kreverHelseerklaering: false,
-        dekkerVinteridretter: true
+        familiealternativer: ['Meg selv', 'Meg selv og min familie'],
+        maksReisevarighet: 45,
+        alternativeReisevarigheter: [45, 90, 180],
+        dekkerVinteridretter: false,
+        maksAlder: 100,
+        egenandel: 0
       },
 
-      ekskluderinger: [
-        'Profesjonell idrett',
-        'Krig og terrorisme',
-        'Beruselse og narkotika'
-      ],
-
       metadata: {
-        lenke: 'https://www.if.no/privat/forsikring/reiseforsikring/pluss',
-        datakilde: 'manual',
+        lenke: 'https://www.if.no/privat/forsikring/reise/reiseforsikring/kjop',
+        dokument: 'https://if.no/apps/vilkarsbasendokument/IPID?ipid=Hel%C3%A5rs_reiseforsikring',
         sistOppdatert: '2025-11-05',
-        oppdatertAv: 'admin'
+        kilde: 'If Skadeforsikring NUF'
       },
 
       popularitet: 92,
       anbefalt: true
     },
-
     {
-      id: 'tryg-reise-basis',
-      selskapId: 'tryg',
-      produktnavn: 'Reiseforsikring',
-      beskrivelse: 'Komplett reiseforsikring for hele familien',
+      id: 'if-reise-super',
+      selskapId: 'if',
+      produktnavn: 'Helårs reiseforsikring Super',
+      beskrivelse: 'Maksimal dekning og flere tillegg - inkluderer alt i Standard pluss SmartDelay+, egenandelsdekning og mer',
 
       pris: {
-        maned: 95,
-        ar: 1050,
+        maned: 326,
+        ar: 3912,
         valuta: 'NOK'
       },
 
       dekninger: {
         medisinsk: {
-          belop: 6000000,
-          beskrivelse: 'Dekning av medisinsk behandling'
+          belop: 'Inkludert',
+          beskrivelse: 'Sykdom og ulykke på reise'
+        },
+        evakuering: {
+          belop: 'Inkludert',
+          beskrivelse: 'Evakuering ved nødssituasjon'
+        },
+        digitalLegetime: {
+          belop: 'Inkludert',
+          beskrivelse: 'Digital legetime ved behov'
+        },
+        psykologiskForstehjelp: {
+          belop: 'Inkludert',
+          beskrivelse: 'Psykologisk førstehjelp ved alvorlig hendelse'
+        },
+        idTyveri: {
+          belop: 'Inkludert',
+          beskrivelse: 'Beskyttelse mot ID-tyveri'
+        },
+        rettshjelp: {
+          belop: 'Inkludert',
+          beskrivelse: 'Rettshjelp og ansvar utenfor Norden'
+        },
+        ekstremsport: {
+          belop: 'Inkludert',
+          beskrivelse: 'Dekning ved ekstremsport'
         },
         avbestilling: {
-          belop: 60000,
-          egenandel: 1500,
-          beskrivelse: 'Avbestillingsdekning'
-        },
-        forsinkelse: {
-          belop: 12000,
-          vilkar: 'Minimum 4 timer forsinkelse',
-          beskrivelse: 'Forsinkelsesdekning'
+          belop: 'Inkludert',
+          beskrivelse: 'Avbestilling av reise'
         },
         bagasje: {
-          belop: 35000,
-          egenandel: 1500,
-          maksPrGjenstand: 20000,
-          beskrivelse: 'Bagasjedekning'
+          belop: 'Inkludert',
+          beskrivelse: 'Tyveri eller skade på eiendeler'
         },
-        ansvar: {
-          belop: 3000000,
-          beskrivelse: 'Ansvarsdekning'
+        forsinketBagasje: {
+          belop: 'Inkludert',
+          beskrivelse: 'Forsinket bagasje'
         },
-        hjemtransport: {
-          belop: 'Ubegrenset',
-          beskrivelse: 'Hjemtransport ved medisinsk nødvendighet'
+        forsinkelse: {
+          belop: 'Inkludert',
+          beskrivelse: 'Kostnader ved forsinkelse (reise, overnatting osv.)'
+        },
+        tapteFeriedager: {
+          belop: 'Inkludert',
+          beskrivelse: 'Kompensasjon for tapte feriedager'
+        },
+        smartDelay: {
+          belop: 'Inkludert',
+          beskrivelse: 'Flyforsinkelse med SmartDelay+ (lounge, kompensasjon osv.)'
+        },
+        uhellsskader: {
+          belop: 'Inkludert',
+          egenandel: 3000,
+          beskrivelse: 'Uhellsskader på eiendeler'
+        },
+        egenandelsdekning: {
+          belop: 'Inkludert',
+          beskrivelse: 'Egenandelsdekning ved skade på leid bil, MC, sykkel eller el-sykkel'
+        },
+        taptHotell: {
+          belop: 'Inkludert',
+          beskrivelse: 'Kompensasjon for tapt hotell, arrangement eller leie ved forsinkelse'
+        },
+        avlystArrangement: {
+          belop: 'Inkludert',
+          beskrivelse: 'Avbestilling ved avlyst offentlig arrangement'
+        },
+        skadedyr: {
+          belop: 'Inkludert',
+          egenandel: 2000,
+          beskrivelse: 'Bekjempelse av skadedyr etter utenlandsreise'
+        },
+        supergaranti: {
+          belop: 'Inkludert',
+          beskrivelse: 'Supergaranti ved flytting av reiseforsikringen til If'
         }
       },
 
       vilkar: {
-        geografiskOmrade: ['Hele verden'],
-        maksAlder: 70,
+        geografiskOmrade: ['Norge', 'Europa', 'Verden'],
         familiedekning: true,
-        maksReisevarighet: 60,
-        kreverHelseerklaering: false,
-        dekkerVinteridretter: false
+        familiealternativer: ['Meg selv', 'Meg selv og min familie'],
+        maksReisevarighet: 45,
+        alternativeReisevarigheter: [45, 90, 180],
+        dekkerVinteridretter: false,
+        maksAlder: 100,
+        egenandel: 3000,
+        ikkeDekket: [
+          'Reiser som allerede er startet når du kjøper forsikringen',
+          'Personer uten norsk folketrygd',
+          'Avbestilling/jobbreiser/streik/konkurs',
+          'Forverring av kjente sykdommer før reisen',
+          'Ekspedisjoner uten tillegg'
+        ],
+        begrensninger: [
+          'Gjelder ikke hjemme, på jobb eller skole',
+          'Ikke gyldig i områder Utenriksdepartementet fraråder',
+          'Ansvar/rettshjelp kun utenfor Norden (ved verdensdekning)'
+        ]
       },
 
-      ekskluderinger: [
-        'Ekstremidrett',
-        'Krig',
-        'Pandemier (gjelder enkelte dekninger)',
-        'Beruselse'
-      ],
-
       metadata: {
-        lenke: 'https://www.tryg.no/privat/forsikring/reiseforsikring',
-        datakilde: 'manual',
+        lenke: 'https://www.if.no/privat/forsikring/reise/reiseforsikring/kjop',
+        dokument: 'https://if.no/apps/vilkarsbasendokument/IPID?ipid=Hel%C3%A5rs_reiseforsikring',
         sistOppdatert: '2025-11-05',
-        oppdatertAv: 'admin'
+        kilde: 'If Skadeforsikring NUF'
       },
 
       popularitet: 78,
       anbefalt: false
     },
-
     {
-      id: 'gjensidige-reise-komplett',
-      selskapId: 'gjensidige',
-      produktnavn: 'Reise Komplett',
-      beskrivelse: 'Alt du trenger for trygg reise',
+      id: 'if-reise-basis-enkelt',
+      selskapId: 'if',
+      produktnavn: 'Helårs reiseforsikring Basis (kun meg selv)',
+      beskrivelse: 'Grunnleggende beskyttelse for reiser i Norge og utlandet',
 
       pris: {
-        maned: 119,
-        ar: 1320,
+        maned: 102,
+        ar: 1224,
         valuta: 'NOK'
       },
 
       dekninger: {
         medisinsk: {
-          belop: 8000000,
-          beskrivelse: 'Omfattende medisinsk dekning inkl. tannbehandling'
+          belop: 'Inkludert',
+          beskrivelse: 'Utgifter ved sykdom og ulykke'
         },
-        avbestilling: {
-          belop: 80000,
-          egenandel: 2000,
-          beskrivelse: 'Høy avbestillingsdekning'
+        evakuering: {
+          belop: 'Inkludert',
+          beskrivelse: 'Evakuering ved nødssituasjon'
         },
-        forsinkelse: {
-          belop: 15000,
-          vilkar: 'Minimum 3 timer forsinkelse',
-          beskrivelse: 'God forsinkelsesdekning'
+        digitalLegetime: {
+          belop: 'Inkludert',
+          beskrivelse: 'Digital legetime ved behov'
         },
-        bagasje: {
-          belop: 45000,
-          egenandel: 2000,
-          maksPrGjenstand: 22000,
-          beskrivelse: 'Høy bagasjedekning'
+        psykologiskForstehjelp: {
+          belop: 'Inkludert',
+          beskrivelse: 'Psykologisk førstehjelp ved alvorlig hendelse'
         },
-        ansvar: {
-          belop: 4000000,
-          beskrivelse: 'Høy ansvarsdekning'
+        idTyveri: {
+          belop: 'Inkludert',
+          beskrivelse: 'Beskyttelse mot ID-tyveri'
         },
-        hjemtransport: {
-          belop: 'Ubegrenset',
-          beskrivelse: 'Hjemtransport'
+        rettshjelp: {
+          belop: 'Inkludert',
+          beskrivelse: 'Rettshjelp og ansvar utenfor Norden'
+        },
+        ekstremsport: {
+          belop: 'Inkludert',
+          beskrivelse: 'Dekning ved ekstremsport'
         }
       },
 
       vilkar: {
-        geografiskOmrade: ['Hele verden'],
-        maksAlder: 75,
-        familiedekning: true,
-        maksReisevarighet: 70,
-        kreverHelseerklaering: false,
-        dekkerVinteridretter: true
+        geografiskOmrade: ['Norge', 'Europa', 'Verden'],
+        familiedekning: false,
+        familiealternativer: ['Meg selv'],
+        maksReisevarighet: 45,
+        alternativeReisevarigheter: [45, 90, 180],
+        dekkerVinteridretter: false,
+        maksAlder: 100,
+        egenandel: 0
       },
 
-      ekskluderinger: [
-        'Profesjonell idrett',
-        'Krig og terror',
-        'Selvpåførte skader'
-      ],
+      metadata: {
+        lenke: 'https://www.if.no/privat/forsikring/reise/reiseforsikring/kjop',
+        dokument: 'https://if.no/apps/vilkarsbasendokument/IPID?ipid=Hel%C3%A5rs_reiseforsikring',
+        sistOppdatert: '2025-11-05',
+        kilde: 'If Skadeforsikring NUF'
+      },
+
+      popularitet: 80,
+      anbefalt: false
+    },
+    {
+      id: 'if-reise-standard-enkelt',
+      selskapId: 'if',
+      produktnavn: 'Helårs reiseforsikring Standard (kun meg selv)',
+      beskrivelse: 'Fullverdig dekning for de fleste - inkluderer alt i Basis pluss avbestilling, bagasje og forsinkelse',
+
+      pris: {
+        maned: 123,
+        ar: 1476,
+        valuta: 'NOK'
+      },
+
+      dekninger: {
+        medisinsk: {
+          belop: 'Inkludert',
+          beskrivelse: 'Utgifter ved sykdom og ulykke'
+        },
+        evakuering: {
+          belop: 'Inkludert',
+          beskrivelse: 'Evakuering ved nødssituasjon'
+        },
+        digitalLegetime: {
+          belop: 'Inkludert',
+          beskrivelse: 'Digital legetime ved behov'
+        },
+        psykologiskForstehjelp: {
+          belop: 'Inkludert',
+          beskrivelse: 'Psykologisk førstehjelp ved alvorlig hendelse'
+        },
+        idTyveri: {
+          belop: 'Inkludert',
+          beskrivelse: 'Beskyttelse mot ID-tyveri'
+        },
+        rettshjelp: {
+          belop: 'Inkludert',
+          beskrivelse: 'Rettshjelp og ansvar utenfor Norden'
+        },
+        ekstremsport: {
+          belop: 'Inkludert',
+          beskrivelse: 'Dekning ved ekstremsport'
+        },
+        avbestilling: {
+          belop: 'Inkludert',
+          beskrivelse: 'Avbestilling av reise'
+        },
+        bagasje: {
+          belop: 'Inkludert',
+          beskrivelse: 'Tyveri eller forsinkelse av bagasje'
+        },
+        tapteFeriedager: {
+          belop: 'Inkludert',
+          beskrivelse: 'Kompensasjon for tapt ferie'
+        }
+      },
+
+      vilkar: {
+        geografiskOmrade: ['Norge', 'Europa', 'Verden'],
+        familiedekning: false,
+        familiealternativer: ['Meg selv'],
+        maksReisevarighet: 45,
+        alternativeReisevarigheter: [45, 90, 180],
+        dekkerVinteridretter: false,
+        maksAlder: 100,
+        egenandel: 0
+      },
 
       metadata: {
-        lenke: 'https://www.gjensidige.no/forsikring/reise',
-        datakilde: 'manual',
+        lenke: 'https://www.if.no/privat/forsikring/reise/reiseforsikring/kjop',
+        dokument: 'https://if.no/apps/vilkarsbasendokument/IPID?ipid=Hel%C3%A5rs_reiseforsikring',
         sistOppdatert: '2025-11-05',
-        oppdatertAv: 'admin'
+        kilde: 'If Skadeforsikring NUF'
       },
 
       popularitet: 88,
       anbefalt: true
     },
-
     {
-      id: 'europeiske-reise-europa',
-      selskapId: 'europeiske',
-      produktnavn: 'Europareise',
-      beskrivelse: 'Spesialtilpasset for Europareiser',
+      id: 'if-reise-super-enkelt',
+      selskapId: 'if',
+      produktnavn: 'Helårs reiseforsikring Super (kun meg selv)',
+      beskrivelse: 'Maksimal dekning - inkluderer alt i Standard pluss SmartDelay+, uhellsforsikring og leiebilforsikring',
 
       pris: {
-        maned: 79,
-        ar: 850,
+        maned: 195,
+        ar: 2340,
         valuta: 'NOK'
       },
 
       dekninger: {
         medisinsk: {
-          belop: 4000000,
-          beskrivelse: 'Medisinsk behandling i Europa'
-        },
-        avbestilling: {
-          belop: 40000,
-          egenandel: 2000,
-          beskrivelse: 'Avbestillingsdekning'
-        },
-        forsinkelse: {
-          belop: 8000,
-          vilkar: 'Minimum 4 timer forsinkelse',
-          beskrivelse: 'Forsinkelsesdekning'
-        },
-        bagasje: {
-          belop: 25000,
-          egenandel: 2000,
-          maksPrGjenstand: 12000,
-          beskrivelse: 'Bagasjedekning'
-        },
-        ansvar: {
-          belop: 2000000,
-          beskrivelse: 'Ansvarsdekning'
-        },
-        hjemtransport: {
-          belop: 'Ubegrenset',
-          beskrivelse: 'Hjemtransport'
-        }
-      },
-
-      vilkar: {
-        geografiskOmrade: ['Europa'],
-        maksAlder: 65,
-        familiedekning: false,
-        maksReisevarighet: 45,
-        kreverHelseerklaering: false,
-        dekkerVinteridretter: false
-      },
-
-      ekskluderinger: [
-        'Farlige aktiviteter',
-        'Krig',
-        'Kjente sykdommer'
-      ],
-
-      metadata: {
-        lenke: 'https://www.europeiske.no/reiseforsikring',
-        datakilde: 'manual',
-        sistOppdatert: '2025-11-05',
-        oppdatertAv: 'admin'
-      },
-
-      popularitet: 72,
-      anbefalt: false
-    }
-  ],
-
-  // Bilforsikring
-  bilforsikring: [
-    {
-      id: 'if-bil-ansvar',
-      selskapId: 'if',
-      produktnavn: 'Bilforsikring Ansvar',
-      beskrivelse: 'Lovpålagt ansvarsforsikring med vegassistanse',
-
-      pris: {
-        maned: 350,
-        ar: 3900,
-        valuta: 'NOK'
-      },
-
-      dekninger: {
-        ansvar: {
-          belop: 100000000,
-          beskrivelse: 'Personskade og tingskade'
-        },
-        vegassistanse: {
           belop: 'Inkludert',
-          beskrivelse: 'Hjelp ved bil motorstopp'
+          beskrivelse: 'Utgifter ved sykdom og ulykke'
+        },
+        evakuering: {
+          belop: 'Inkludert',
+          beskrivelse: 'Evakuering ved nødssituasjon'
+        },
+        digitalLegetime: {
+          belop: 'Inkludert',
+          beskrivelse: 'Digital legetime ved behov'
+        },
+        psykologiskForstehjelp: {
+          belop: 'Inkludert',
+          beskrivelse: 'Psykologisk førstehjelp ved alvorlig hendelse'
+        },
+        idTyveri: {
+          belop: 'Inkludert',
+          beskrivelse: 'Beskyttelse mot ID-tyveri'
         },
         rettshjelp: {
-          belop: 150000,
-          beskrivelse: 'Juridisk bistand'
+          belop: 'Inkludert',
+          beskrivelse: 'Rettshjelp og ansvar utenfor Norden'
+        },
+        ekstremsport: {
+          belop: 'Inkludert',
+          beskrivelse: 'Dekning ved ekstremsport'
+        },
+        avbestilling: {
+          belop: 'Inkludert',
+          beskrivelse: 'Avbestilling av reise'
+        },
+        bagasje: {
+          belop: 'Inkludert',
+          beskrivelse: 'Tyveri eller forsinkelse av bagasje'
+        },
+        tapteFeriedager: {
+          belop: 'Inkludert',
+          beskrivelse: 'Kompensasjon for tapt ferie'
+        },
+        smartDelay: {
+          belop: 'Inkludert',
+          beskrivelse: 'Flyforsinkelse med SmartDelay+'
+        },
+        uhellsforsikring: {
+          belop: 'Inkludert',
+          egenandel: 3000,
+          beskrivelse: 'Uhellsforsikring på eiendeler'
+        },
+        leiebilforsikring: {
+          belop: 'Inkludert',
+          beskrivelse: 'Leiebilforsikring'
         }
       },
 
       vilkar: {
-        egenandel: 0,
-        bonustrinn: true,
-        maksAlder: 85,
-        dekkerLeie: false
+        geografiskOmrade: ['Norge', 'Europa', 'Verden'],
+        familiedekning: false,
+        familiealternativer: ['Meg selv'],
+        maksReisevarighet: 45,
+        alternativeReisevarigheter: [45, 90, 180],
+        dekkerVinteridretter: false,
+        maksAlder: 100,
+        egenandel: 3000
       },
 
       metadata: {
-        lenke: 'https://www.if.no/privat/forsikring/bilforsikring',
-        datakilde: 'manual',
+        lenke: 'https://www.if.no/privat/forsikring/reise/reiseforsikring/kjop',
+        dokument: 'https://if.no/apps/vilkarsbasendokument/IPID?ipid=Hel%C3%A5rs_reiseforsikring',
         sistOppdatert: '2025-11-05',
-        oppdatertAv: 'admin'
+        kilde: 'If Skadeforsikring NUF'
       },
 
       popularitet: 75,
       anbefalt: false
-    },
-    {
-      id: 'tryg-bil-kasko',
-      selskapId: 'tryg',
-      produktnavn: 'Bilforsikring Kasko',
-      beskrivelse: 'Fullstendig dekning for din bil',
-
-      pris: {
-        maned: 650,
-        ar: 7200,
-        valuta: 'NOK'
-      },
-
-      dekninger: {
-        ansvar: {
-          belop: 100000000,
-          beskrivelse: 'Personskade og tingskade'
-        },
-        kasko: {
-          belop: 'Bilens verdi',
-          beskrivelse: 'Alle typer skader'
-        },
-        vegassistanse: {
-          belop: 'Inkludert',
-          beskrivelse: 'Døgnåpen hjelp'
-        },
-        erstatningsbil: {
-          belop: 10000,
-          beskrivelse: 'Inntil 30 dager'
-        },
-        rettshjelp: {
-          belop: 200000,
-          beskrivelse: 'Juridisk bistand'
-        }
-      },
-
-      vilkar: {
-        egenandel: 6000,
-        bonustrinn: true,
-        maksAlder: 85,
-        dekkerLeie: true
-      },
-
-      metadata: {
-        lenke: 'https://www.tryg.no/privat/forsikring/bilforsikring',
-        datakilde: 'manual',
-        sistOppdatert: '2025-11-05',
-        oppdatertAv: 'admin'
-      },
-
-      popularitet: 88,
-      anbefalt: true
     }
   ],
-
-  // Innboforsikring
-  innboforsikring: [
-    {
-      id: 'gjensidige-innbo-basis',
-      selskapId: 'gjensidige',
-      produktnavn: 'Innboforsikring Basis',
-      beskrivelse: 'Grunnleggende innbodekning',
-
-      pris: {
-        maned: 180,
-        ar: 2000,
-        valuta: 'NOK'
-      },
-
-      dekninger: {
-        innbo: {
-          belop: 1000000,
-          beskrivelse: 'Møbler, klær og løsøre'
-        },
-        ansvar: {
-          belop: 5000000,
-          beskrivelse: 'Personskade og tingskade'
-        },
-        reisegods: {
-          belop: 50000,
-          beskrivelse: 'Ting på reise'
-        },
-        elektronikk: {
-          belop: 50000,
-          beskrivelse: 'Datamaskiner, mobil, etc'
-        }
-      },
-
-      vilkar: {
-        egenandel: 4000,
-        naturskade: true,
-        maksAlder: null,
-        dekkerLeie: true
-      },
-
-      metadata: {
-        lenke: 'https://www.gjensidige.no/forsikring/innbo',
-        datakilde: 'manual',
-        sistOppdatert: '2025-11-05',
-        oppdatertAv: 'admin'
-      },
-
-      popularitet: 82,
-      anbefalt: true
-    }
-  ],
-
-  // Dyreforsikring
-  dyreforsikring: [
-    {
-      id: 'if-hund-basis',
-      selskapId: 'if',
-      produktnavn: 'Hundeforsikring Basis',
-      beskrivelse: 'Grunnleggende forsikring for hund',
-
-      pris: {
-        maned: 250,
-        ar: 2800,
-        valuta: 'NOK'
-      },
-
-      dekninger: {
-        veterinar: {
-          belop: 25000,
-          beskrivelse: 'Årlig maks for behandling'
-        },
-        operasjon: {
-          belop: 25000,
-          beskrivelse: 'Kirurgiske inngrep'
-        },
-        ansvar: {
-          belop: 5000000,
-          beskrivelse: 'Skader hundens forårsaker'
-        },
-        dodsfall: {
-          belop: 10000,
-          beskrivelse: 'Ved ulykke eller sykdom'
-        }
-      },
-
-      vilkar: {
-        egenandel: '20% av kostnad',
-        maksAlder: 10,
-        ventetid: '30 dager',
-        rasebegrensning: false
-      },
-
-      metadata: {
-        lenke: 'https://www.if.no/privat/forsikring/dyreforsikring',
-        datakilde: 'manual',
-        sistOppdatert: '2025-11-05',
-        oppdatertAv: 'admin'
-      },
-
-      popularitet: 70,
-      anbefalt: false
-    }
-  ],
-
-  // Placeholder for resten
+  bilforsikring: [],
+  innboforsikring: [],
   husforsikring: [],
   ulykkeforsikring: [],
+  dyreforsikring: [],
   livsforsikring: []
-};
-
-// Hjelpefunksjon for å legge til nye produkter (kan brukes senere)
-export const addProduct = (type, product) => {
-  if (insuranceProducts[type]) {
-    insuranceProducts[type].push(product);
-  }
-};
-
-// Hjelpefunksjon for å få alle produkter på tvers av typer
-export const getAllProducts = () => {
-  const allProducts = [];
-  for (const type in insuranceProducts) {
-    allProducts.push(...insuranceProducts[type]);
-  }
-  return allProducts;
-};
-
-// Hjelpefunksjon for å telle antall produkter per type
-export const getProductCount = () => {
-  const counts = {};
-  for (const type in insuranceProducts) {
-    counts[type] = insuranceProducts[type].length;
-  }
-  return counts;
 };

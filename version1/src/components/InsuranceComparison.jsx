@@ -15,6 +15,8 @@ function InsuranceComparison({ type }) {
   const [showFilters, setShowFilters] = useState(false);
   const [stats, setStats] = useState(null);
   const [imageErrors, setImageErrors] = useState({});
+  const [reportingDeviation, setReportingDeviation] = useState(false);
+  const [expandedCoverage, setExpandedCoverage] = useState({});
 
   useEffect(() => {
     loadProducts(type);
@@ -52,6 +54,54 @@ function InsuranceComparison({ type }) {
       .join('')
       .toUpperCase()
       .slice(0, 2);
+  };
+
+  const handleReportDeviation = () => {
+    setReportingDeviation(true);
+    // TODO: Implementer rapportering av avvik
+    alert('Takk for din tilbakemelding! Vi vil gjennomgå og oppdatere prisene dersom det er avvik.');
+    setTimeout(() => setReportingDeviation(false), 2000);
+  };
+
+  const toggleCoverageDetails = (productId) => {
+    setExpandedCoverage(prev => ({
+      ...prev,
+      [productId]: !prev[productId]
+    }));
+  };
+
+  const getCoverageCategories = (dekninger) => {
+    return {
+      'Sykdom, ulykke og evakuering': [
+        { key: 'medisinsk', label: 'Utgifter ved sykdom eller ulykke på reise' },
+        { key: 'evakuering', label: 'Evakuering' },
+        { key: 'digitalLegetime', label: 'Digital legetime' },
+        { key: 'psykologiskForstehjelp', label: 'Psykologisk førstehjelp ved en alvorlig hendelse' },
+      ],
+      'Avbestilling og forsinkelser': [
+        { key: 'avbestilling', label: 'Avbestilling av reise' },
+        { key: 'forsinkelse', label: 'Utgifter til reise og overnatting ved forsinkelser' },
+        { key: 'forsinketBagasje', label: 'Forsinket bagasje' },
+        { key: 'tapteFeriedager', label: 'Kompensasjon for tapte feriedager' },
+        { key: 'smartDelay', label: 'Flyforsinkelse – lounge med SmartDelay+' },
+        { key: 'taptHotell', label: 'Kompensasjon for leiebil, arrangement og hotell ved forsinkelse' },
+        { key: 'avlystArrangement', label: 'Avbestilling på grunn av avlyst offentlig arrangement' },
+      ],
+      'Tyveri og skade på eiendeler': [
+        { key: 'bagasje', label: 'Tyveri eller skade på personlige eiendeler' },
+        { key: 'uhellsskader', label: 'Uhellsforsikring på eiendeler' },
+        { key: 'uhellsforsikring', label: 'Uhellsforsikring på eiendeler' },
+        { key: 'egenandelsdekning', label: 'Egenandel ved skade på leiebil og andre transportmidler på ferie' },
+        { key: 'leiebilforsikring', label: 'Egenandel ved skade på leiebil og andre transportmidler på ferie' },
+      ],
+      'Øvrige dekninger': [
+        { key: 'idTyveri', label: 'ID-tyveri' },
+        { key: 'rettshjelp', label: 'Rettshjelp og ansvarsforsikring utenfor Norden' },
+        { key: 'ekstremsport', label: 'Ekstremsport' },
+        { key: 'skadedyr', label: 'Bekjempelse av skadedyr etter en utenlandsreise' },
+        { key: 'supergaranti', label: 'Supergaranti – når du flytter reiseforsikringen til oss' },
+      ]
+    };
   };
 
   return (
@@ -178,10 +228,6 @@ function InsuranceComparison({ type }) {
                       )}
                       <h3>{product.selskap.navn}</h3>
                     </div>
-                    <div className="rating">
-                      {'⭐'.repeat(Math.round(product.selskap.rating))}
-                      <span>{product.selskap.rating}</span>
-                    </div>
                   </div>
                   <div className="price">
                     <span className="amount">{formatPrice(product.pris.maned)}</span>
@@ -192,19 +238,79 @@ function InsuranceComparison({ type }) {
                 <h4 className="product-name">{product.produktnavn}</h4>
                 <p className="product-description">{product.beskrivelse}</p>
 
-                <div className="coverage-highlights">
-                  {Object.entries(product.dekninger || {}).slice(0, 3).map(([key, value]) => (
-                    <div key={key} className="coverage-item">
-                      <span className="label">{key.charAt(0).toUpperCase() + key.slice(1)}:</span>
-                      <span className="value">
-                        {value && value.belop ? formatNumber(value.belop) :
-                         typeof value === 'string' ? value :
-                         value && typeof value === 'object' ? JSON.stringify(value) :
-                         'N/A'}
-                      </span>
+                <div className="coverage-categories">
+                  <div className="category-highlight">
+                    <h5>
+                      <img src="/assets/icons/yes.png" alt="✓" className="category-icon" />
+                      Sykdom, ulykke og evakuering
+                    </h5>
+                    <div className="info-icon-wrapper">
+                      <img src="/assets/icons/info.png" alt="Info" className="info-icon" />
+                      <div className="info-tooltip">
+                        Ubegrenset eller høy dekning for medisinske utgifter, evakuering og hjemtransport.
+                      </div>
                     </div>
-                  ))}
+                  </div>
+
+                  {product.dekninger.avbestilling && (
+                    <div className="category-highlight">
+                      <h5>
+                        <img src="/assets/icons/yes.png" alt="✓" className="category-icon" />
+                        Avbestilling og forsinkelser
+                      </h5>
+                      <div className="info-icon-wrapper">
+                        <img src="/assets/icons/info.png" alt="Info" className="info-icon" />
+                        <div className="info-tooltip">
+                          Økonomisk trygghet før og under reisen ved avlysning eller forsinkelser.
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {product.dekninger.bagasje && (
+                    <div className="category-highlight">
+                      <h5>
+                        <img src="/assets/icons/yes.png" alt="✓" className="category-icon" />
+                        Tyveri og skade på eiendeler
+                      </h5>
+                      <div className="info-icon-wrapper">
+                        <img src="/assets/icons/info.png" alt="Info" className="info-icon" />
+                        <div className="info-tooltip">
+                          Dekning for tyveri, ran eller skade på mobil, PC, kamera og bagasje.
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
+
+                <button
+                  className="coverage-details-btn"
+                  onClick={() => toggleCoverageDetails(product.id)}
+                >
+                  {expandedCoverage[product.id] ? '▲ Skjul alle dekninger' : '▼ Les alt av dekninger'}
+                </button>
+
+                {expandedCoverage[product.id] && (
+                  <div className="coverage-table">
+                    {Object.entries(getCoverageCategories(product.dekninger)).map(([category, items]) => (
+                      <div key={category} className="coverage-category">
+                        <h6>{category}</h6>
+                        <ul>
+                          {items.map(item => (
+                            <li key={item.key} className={product.dekninger[item.key] ? 'included' : 'not-included'}>
+                              <img
+                                src={product.dekninger[item.key] ? '/assets/icons/yes.png' : '/assets/icons/no.png'}
+                                alt={product.dekninger[item.key] ? '✓' : '✗'}
+                                className="check-icon"
+                              />
+                              <span className="coverage-label">{item.label}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                )}
 
                 <div className="product-tags">
                   {product.vilkar?.familiedekning && (
@@ -248,9 +354,23 @@ function InsuranceComparison({ type }) {
         </div>
       )}
 
-      <div className="disclaimer">
-        ⓘ Prisene er veiledende og kan variere basert på alder, helsetilstand og andre faktorer.
-        Kontakt forsikringsselskapet for eksakt pris og fullstendige vilkår.
+      <div className="disclaimer-section">
+        <div className="disclaimer">
+          <strong>ⓘ Viktig informasjon om priser:</strong>
+          <p>
+            Disse prisene kan variere fra person til person, ettersom forskjellige vilkår gjelder.
+            Dette er kun veiledende priser som vil hjelpe med å få et oversiktsbilde på hvilken aktør
+            som er mest gunstig. Kontakt forsikringsselskapet direkte for eksakte priser basert på
+            din personlige situasjon.
+          </p>
+        </div>
+        <button
+          className="report-deviation-btn"
+          onClick={handleReportDeviation}
+          disabled={reportingDeviation}
+        >
+          {reportingDeviation ? 'Takk for tilbakemeldingen!' : '📝 Rapporter avvik i priser'}
+        </button>
       </div>
     </div>
   );

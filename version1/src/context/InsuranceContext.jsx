@@ -3,37 +3,9 @@ import insuranceService from '../services/insuranceService';
 
 const InsuranceContext = createContext();
 
-// Dummy data for initial state - brukerens egne forsikringer
-const initialInsurances = [
-  {
-    id: 1,
-    selskap: 'If Forsikring',
-    dekningstype: 'Innboforsikring',
-    pris: 250,
-    betalingsintervall: 'måned',
-    betalingsdato: '2025-11-15'
-  },
-  {
-    id: 2,
-    selskap: 'Gjensidige',
-    dekningstype: 'Bilforsikring',
-    pris: 4500,
-    betalingsintervall: 'år',
-    betalingsdato: '2025-12-01'
-  },
-  {
-    id: 3,
-    selskap: 'Tryg',
-    dekningstype: 'Reiseforsikring',
-    pris: 180,
-    betalingsintervall: 'måned',
-    betalingsdato: '2025-11-20'
-  }
-];
-
 export const InsuranceProvider = ({ children }) => {
   // Brukerens egne forsikringer (eksisterende funksjonalitet)
-  const [insurances, setInsurances] = useState(initialInsurances);
+  const [insurances, setInsurances] = useState([]);
 
   // Ny funksjonalitet for produktsammenligning
   const [comparisonProducts, setComparisonProducts] = useState([]);
