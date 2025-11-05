@@ -1,51 +1,69 @@
-import React from 'react';
+import React, { useMemo } from 'react';
+import insuranceService from '../services/insuranceService';
 import '../styles/HomePage.css';
 
-function HomePage({ onNavigateToMyPage }) {
+function HomePage({ onNavigateToMyPage, onNavigateToComparison }) {
   const insuranceTypes = [
     {
-      id: 'bil',
+      id: 'bilforsikring',
       title: 'Bilforsikring',
       description: 'Sammenlign priser på kasko, ansvar og delkasko for din bil',
       icon: '🚗'
     },
     {
-      id: 'innbo',
+      id: 'innboforsikring',
       title: 'Innboforsikring',
       description: 'Finn beste pris på innboforsikring for bolig og løsøre',
       icon: '🏠'
     },
     {
-      id: 'reise',
+      id: 'reiseforsikring',
       title: 'Reiseforsikring',
       description: 'Sammenlign reiseforsikringer for ferie og forretningsreiser',
       icon: '✈️'
     },
     {
-      id: 'hus',
+      id: 'husforsikring',
       title: 'Husforsikring',
       description: 'Finn riktig dekning for hus, hytte eller borettslag',
       icon: '🏡'
     },
     {
-      id: 'ulykke',
+      id: 'ulykkeforsikring',
       title: 'Ulykkeforsikring',
       description: 'Sikre deg og familien mot ulykker og skader',
       icon: '🩹'
     },
     {
-      id: 'dyr',
+      id: 'dyreforsikring',
       title: 'Dyreforsikring',
       description: 'Forsikring for hund, katt og andre kjæledyr',
       icon: '🐕'
     },
     {
-      id: 'liv',
+      id: 'livsforsikring',
       title: 'Livsforsikring',
       description: 'Sikre familiens økonomi ved dødsfall',
       icon: '❤️'
     }
   ];
+
+  // Hent prisinfo for hver forsikringstype
+  const priceRanges = useMemo(() => {
+    const ranges = {};
+    insuranceTypes.forEach(type => {
+      const stats = insuranceService.getProductStats(type.id);
+      ranges[type.id] = stats;
+    });
+    return ranges;
+  }, []);
+
+  const formatPrice = (price) => {
+    return new Intl.NumberFormat('nb-NO', {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0
+    }).format(price);
+  };
 
   return (
     <div className="homepage">
@@ -65,16 +83,34 @@ function HomePage({ onNavigateToMyPage }) {
         <p className="section-subtitle">Hva ønsker du å sammenligne?</p>
         
         <div className="insurance-grid">
-          {insuranceTypes.map((type) => (
-            <div key={type.id} className="insurance-card">
-              <div className="insurance-icon">{type.icon}</div>
-              <h3>{type.title}</h3>
-              <p>{type.description}</p>
-              <button className="compare-btn">
-                Sammenlign tilbud
-              </button>
-            </div>
-          ))}
+          {insuranceTypes.map((type) => {
+            const priceInfo = priceRanges[type.id];
+            return (
+              <div key={type.id} className="insurance-card">
+                <div className="insurance-icon">{type.icon}</div>
+                <h3>{type.title}</h3>
+                <p>{type.description}</p>
+                {priceInfo && priceInfo.antallProdukter > 0 ? (
+                  <div className="price-range">
+                    Fra: {formatPrice(priceInfo.laveste)} kr - {formatPrice(priceInfo.hoyeste)} kr/mnd
+                  </div>
+                ) : (
+                  <div className="price-range no-products">
+                    Kommer snart
+                  </div>
+                )}
+                <button
+                  className="compare-btn"
+                  onClick={() => onNavigateToComparison(type.id)}
+                  disabled={!priceInfo || priceInfo.antallProdukter === 0}
+                >
+                  {priceInfo && priceInfo.antallProdukter > 0
+                    ? 'Sammenlign tilbud'
+                    : 'Kommer snart'}
+                </button>
+              </div>
+            );
+          })}
         </div>
       </section>
 
